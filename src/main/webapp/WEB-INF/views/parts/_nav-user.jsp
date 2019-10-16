@@ -12,14 +12,14 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link ${pagina.endsWith('/customer-home') ? 'active' : ''}" href="customer-home">Home
+                    <a class="nav-link ${pagina.endsWith('/customer-home') ? 'active' : ''}" href="${pageContext.request.contextPath}/home">Home
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ${pagina.endsWith('/vehicles') ? 'active' : ''}" href="mezzi">Parco auto</a>
+                    <a class="nav-link ${pagina.endsWith('/vehicles') ? 'active' : ''}" href="${pageContext.request.contextPath}/vehicles">Parco auto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ${pagina.endsWith('/user') ? 'active' : ''}" href="profilo">Profilo utente</a>
+                    <a class="nav-link ${pagina.endsWith('/user') ? 'active' : ''}" href="${pageContext.request.contextPath}/user">Profilo utente</a>
                 </li>
             </ul>
         </div>

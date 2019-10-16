@@ -11,9 +11,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
@@ -28,19 +29,30 @@ public class UserController {
     @Autowired
     private ModelMapper modelMapper;
 
+    @GetMapping
+    public String index(ModelMap model, HttpSession session){
+        String logged = (String) session.getAttribute("loggedUser");
+
+        if(logged!=null){
+            User user = userService.getUserByMail(logged);
+            RegisterDTO registerDTO = convertToDto(user);
+            if(user.getTypology().getType().equals("Admin")){
+                model.addAttribute("user",registerDTO);
+                return "profile";
+            } else {
+                model.addAttribute("user",registerDTO);
+                return "profile-customer";
+            }
+        }
+        return "redirect:/";
+    }
+
     @GetMapping("/register")
     public String showRegister(Model model) {
         User user = new User();
         RegisterDTO userDTO = convertToDto(user);
         model.addAttribute("user", userDTO);
         return "register";
-    }
-
-    @GetMapping("/list")
-    public String showUsers(Model model) {
-        List <User> users = userService.getUsers();
-        model.addAttribute("users", users);
-        return "list-users";
     }
 
     @PostMapping("/save")
@@ -59,10 +71,20 @@ public class UserController {
     }
 
     @GetMapping("/edit/{id}")
-    public String editUser(@PathVariable int id, Model model) throws ResourceNotFoundException {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        return "customer-form";
+    public String editUser(@PathVariable int id, HttpSession session, Model model) throws ResourceNotFoundException {
+        String logged = (String) session.getAttribute("loggedUser");
+        if(logged!=null){
+            User user = userService.getUser(id);
+            RegisterDTO registerDTO = convertToDto(user);
+            if(user.getTypology().getType().equals("Admin")){
+                model.addAttribute("user",registerDTO);
+                return "profile";
+            } else {
+                model.addAttribute("user",registerDTO);
+                return "profile-customer";
+            }
+        }
+        return "redirect:/";
     }
 
     @DeleteMapping("/delete/{id}")

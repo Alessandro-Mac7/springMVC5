@@ -6,7 +6,31 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="738fffa6-72d8-4ed6-a6a2-ec7a9e8938a8" name="Default Changelist" comment="" />
+    <list default="true" id="738fffa6-72d8-4ed6-a6a2-ec7a9e8938a8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile-customer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/profile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/vehicles-customer.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/vehicles.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/si2001/springMVC/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/si2001/springMVC/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/si2001/springMVC/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/si2001/springMVC/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/si2001/springMVC/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/si2001/springMVC/controller/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts/_nav-super.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts/_nav-super.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts/_nav-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts/_nav-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts/_sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts/_sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/si2001/springMVC/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/si2001/springMVC/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/si2001/springMVC/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/si2001/springMVC/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/WEB-INF/classes/it/si2001/springMVC/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/WEB-INF/classes/it/si2001/springMVC/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/WEB-INF/classes/it/si2001/springMVC/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/WEB-INF/classes/it/si2001/springMVC/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/WEB-INF/classes/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/WEB-INF/classes/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/WEB-INF/views/parts/_nav-super.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/WEB-INF/views/parts/_nav-super.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/WEB-INF/views/parts/_nav-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/WEB-INF/views/parts/_nav-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/WEB-INF/views/parts/_sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/WEB-INF/views/parts/_sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/springMVC/resources/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/springMVC/resources/js/admin.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +75,7 @@
         <item name="springmvc_db@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="springmvc_db: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="vehicle: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -61,8 +85,8 @@
       <list>
         <option value="spring-beans.schema" />
         <option value="package-info" />
-        <option value="Jsp File" />
         <option value="Interface" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -91,6 +115,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/parts" />
@@ -262,8 +287,16 @@
       <workItem from="1571047036028" duration="3445000" />
       <workItem from="1571055175670" duration="10768000" />
       <workItem from="1571124345123" duration="24484000" />
-      <workItem from="1571211553585" duration="18986000" />
+      <workItem from="1571211553585" duration="23955000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1571234590900</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1571234590900</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +312,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

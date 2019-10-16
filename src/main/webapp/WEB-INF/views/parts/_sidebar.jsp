@@ -7,9 +7,8 @@
 <div class="bg-side border-right" id="sidebar-wrapper">
     <div class="sidebar-heading">Car Rental </div>
     <div class="list-group list-group-mine">
-        <a href="admin-home" class="list-group-item list-group-item-action ${pagina.endsWith('/admin-home') ? 'active' : ''}">Dashboard</a>
-        <a href="mezzi" class="list-group-item list-group-item-action ${pagina.endsWith('/vehicles') ? 'active' : ''}">Parco auto</a>
-        <a href="buonisconto" class="list-group-item list-group-item-action ${pagina.endsWith('/user') ? 'active' : ''}">Profilo Utente</a>
+        <a href="${pageContext.request.contextPath}/home" class="list-group-item list-group-item-action ${pagina.endsWith('/home') ? 'active' : ''}">Dashboard</a>
+        <a href="${pageContext.request.contextPath}/vehicle/list" class="list-group-item list-group-item-action ${pagina.endsWith('/vehicles') ? 'active' : ''}">Parco auto</a>
     </div>
 </div>
 <!-- /#sidebar-wrapper -->

@@ -32,10 +32,18 @@ $(document).ready(function(){
         insertCustomer(jsonData);
     });
 
-    $(".insVehicleFormForm").on('submit', function(e) {
+    $(".insVehicleForm").on('submit', function(e) {
         e.preventDefault();
-        var form = $('.insVehicleForm').serialize();
-        insertVehicle(form);
+        var formData = {};
+        formData["name"] = $('.insVehicleForm').find('input[name="uniqueId"]').val();
+        formData["lastName"] = $('.insVehicleForm').find('input[name="manufacturer"]').val();
+        formData["date"] = $('.insVehicleForm').find('input[name="model"]').val();
+        formData["email"] = $('.insVehicleForm').find('input[name="carRegistration"]').val();
+        formData["password"] = $('.insVehicleForm').find('select[name="category_id"]').val();
+
+        var jsonData = JSON.stringify(formData);
+        console.log(data);
+        //insertVehicle(form);
     });
 
     // DELETE

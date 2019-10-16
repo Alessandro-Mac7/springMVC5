@@ -57,6 +57,12 @@ public class AuthController {
         return new ModelAndView("redirect:/");
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "redirect:/";
+    }
+
     private UserLoginDTO convertToDto(User user) {
         UserLoginDTO userLoginDTO = modelMapper.map(user, UserLoginDTO.class);
         return userLoginDTO;
