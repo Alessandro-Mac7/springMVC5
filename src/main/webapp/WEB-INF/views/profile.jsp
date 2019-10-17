@@ -26,17 +26,14 @@
             </div>
 
             <div class="row pt-4">
-                <form:form cssClass="form-signin"  action="saveCustomer" modelAttribute="user" method="post">
+                <form:form cssClass="form-signin"  action="user/save" modelAttribute="user" method="post">
+                    <form:hidden path="id" cssClass="form-control"/>
+                    <form:hidden path="admin" cssClass="form-check-input" />
                     <form:input path="email" cssClass="form-control" placeholder="Email"/>
                     <form:password  path="password" cssClass="form-control" placeholder="Password" />
                     <form:input  path="name" cssClass="form-control" placeholder="Nome" />
                     <form:input  path="lastName" cssClass="form-control" placeholder="Cognome"/>
                     <form:input  type="date" path="date" cssClass="form-control" />
-                    <div class="form-group form-check mt-3 ml-2">
-                        <label class="form-check-label">
-                            <form:checkbox path="admin" cssClass="form-check-input" /> Admin
-                        </label>
-                    </div>
                     <button class="btn btn-lg btn-success btn-block mt-2" type="submit">Modifica profilo</button>
                     <div class="col-sm-12 text-center mt-2">
                         <a href="${pageContext.request.contextPath}/home">Indietro</a>

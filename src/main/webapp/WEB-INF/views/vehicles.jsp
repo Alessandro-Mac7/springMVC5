@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/views/parts/_header.jsp"/>
@@ -26,17 +25,18 @@
                     <h4>Parco auto</h4>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target=".insMezzoModal" style="width: 30%;margin: 1px;">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target=".insVehicleModal" style="width: 30%;margin: 1px;">
                         <i class="fas fa-plus"></i>&ensp;Nuovo</button>
                 </div>
             </div>
 
-            <c:if test="${not empty vehicles}">
-                <input type="text" class="form-control" id="filterMezziTable">
+                <c:if test="${not empty vehicles}">
+                <div class="row pt-4">
+                    <input type="text" class="form-control" id="filterMezziTable">
+                </div>
                 <table class="table table-hover" id="mezziTable">
                     <thead>
                     <tr>
-                        <th></th>
                         <th scope="col">Targa</th>
                         <th scope="col">Casa costruttrice</th>
                         <th scope="col">Modello</th>
@@ -53,15 +53,15 @@
                             <td>${vehicle.model}</td>
                             <td>${vehicle.carRegistration}</td>
                             <td>${vehicle.category.category}</td>
-                            <td><a href="" data-toggle="tooltip" data-placement="top" title="Modifica mezzo"  style="cursor:pointer; "><i class="fas fa-edit"></i></a>&nbsp;
-                                <a class="deleteMezzo" href="javascript:void(0);"  data-id=${vehicle.id} data-toggle="tooltip" data-placement="top" title="Elimina mezzo" style="cursor:pointer; "><i class="fas fa-trash-alt"></i></a></td>
+                            <td><a href="" class="editVehicleAjax" data-id=${vehicle.id} data-toggle="tooltip" data-placement="top" title="Modifica mezzo"  style="cursor:pointer; "><i class="fas fa-edit"></i></a>&nbsp;
+                                <a class="deleteVehicle" href="javascript:void(0);"  data-id=${vehicle.id} data-toggle="tooltip" data-placement="top" title="Elimina veicolo" style="cursor:pointer; "><i class="fas fa-trash-alt"></i></a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </c:if>
 
-            <c:if test="${ empty vehicles}">
+                <c:if test="${ empty vehicles}">
                 <div class="col-sm-12 text-center">
                     <h4 style="color: gray">Nessun veicolo registrato!</h4>
                     <button type="button" class="btn btn-info" data-toggle="modal" data-target=".insVehicleModal" style="width: 30%;margin: 1px;">
@@ -92,7 +92,7 @@
                     <input type="text" class="form-control" name="manufacturer" placeholder="Casa costruttrice" required>
                     <input type="text" class="form-control" name="model" placeholder="modello" required>
                     <input type="date" class="form-control" name="carRegistration" placeholder="Anno immatricolazione" required>
-                    <select class="form-control" name="category_id">
+                    <select class="form-control" name="categoryId">
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}">${category.category}</option>
                         </c:forEach>
@@ -103,6 +103,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade successModal" tabindex="-1" role="dialog" aria-labelledby="success-modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -138,6 +139,33 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade editVehicleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modifica veicolo</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="form-signin editVehicleForm" action="" method="post">
+                    <input type="text" class="form-control" name="id" disabled>
+                    <input type="text" class="form-control" name="uniqueId" required>
+                    <input type="text" class="form-control" name="manufacturer" required>
+                    <input type="text" class="form-control" name="model" required>
+                    <input type="date" class="form-control" name="carRegistration" required>
+                    <select class="form-control" name="categoryId">
+                        <c:forEach items="${categories}" var="category">
+                            <option value="${category.id}">${category.category}</option>
+                        </c:forEach>
+                    </select>
+                    <button class="btn btn-lg btn-warning btn-block mt-2" type="submit">Modifica</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <!-- Scripts -->

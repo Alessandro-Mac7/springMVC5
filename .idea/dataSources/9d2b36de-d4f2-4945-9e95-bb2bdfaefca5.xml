@@ -1231,7 +1231,7 @@
     </column>
     <column id="303" parent="282" name="date">
       <Position>2</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="304" parent="282" name="email">
@@ -1295,7 +1295,7 @@
     </column>
     <column id="315" parent="283" name="carRegistration">
       <Position>2</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

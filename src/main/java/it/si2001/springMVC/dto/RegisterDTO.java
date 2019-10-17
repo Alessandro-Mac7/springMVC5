@@ -1,9 +1,10 @@
 package it.si2001.springMVC.dto;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class RegisterDTO {
+public class RegisterDTO implements Serializable {
 
     private int id;
     private String name;

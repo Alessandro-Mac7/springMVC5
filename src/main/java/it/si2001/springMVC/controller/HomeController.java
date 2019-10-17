@@ -1,9 +1,13 @@
 package it.si2001.springMVC.controller;
 
+import it.si2001.springMVC.model.Booking;
 import it.si2001.springMVC.model.Category;
 import it.si2001.springMVC.model.User;
+import it.si2001.springMVC.model.Vehicle;
+import it.si2001.springMVC.service.BookingService;
 import it.si2001.springMVC.service.CategoryService;
 import it.si2001.springMVC.service.UserService;
+import it.si2001.springMVC.service.VehicleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,18 +31,37 @@ public class HomeController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private VehicleService vehicleService;
+
+    @Autowired
+    private BookingService bookingService;
+
+
+
     @GetMapping
     public String index(ModelMap model, HttpSession session){
         String email = (String) session.getAttribute("loggedUser");
         if(email!=null){
-            List<User> customers = userService.getCustomers();
-            List<Category> categories = categoryService.getAll();
+            String typology =userService.getUserByMail(email).getTypology().getType();
+            if(typology.equals("Admin")){
+                List<User> customers = userService.getCustomers();
+                List<Category> categories = categoryService.getAll();
 
-            model.addAttribute("customers",customers);
-            model.addAttribute("categories",categories);
-            return "admin-home";
+                model.addAttribute("customers",customers);
+                model.addAttribute("categories",categories);
+                return "admin-home";
+            } else {
+                List<Vehicle> vehicles = vehicleService.getVehicles();
+                List<Booking> bookings = bookingService.getBookings();
+
+                model.addAttribute("bookings",bookings);
+                model.addAttribute("vehicles",vehicles);
+                return "customer-home";
+            }
+
         } else
-            return "welcome";
+            return "redirect:/";
     }
 
 }

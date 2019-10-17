@@ -2,7 +2,9 @@ package it.si2001.springMVC.dto;
 
 import it.si2001.springMVC.model.Typology;
 
-public class UserLoginDTO {
+import java.io.Serializable;
+
+public class UserLoginDTO implements Serializable {
 
     private int id;
     private String email;

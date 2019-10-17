@@ -8,7 +8,7 @@
     <div class="sidebar-heading">Car Rental </div>
     <div class="list-group list-group-mine">
         <a href="${pageContext.request.contextPath}/home" class="list-group-item list-group-item-action ${pagina.endsWith('/home') ? 'active' : ''}">Dashboard</a>
-        <a href="${pageContext.request.contextPath}/vehicle/list" class="list-group-item list-group-item-action ${pagina.endsWith('/vehicles') ? 'active' : ''}">Parco auto</a>
+        <a href="${pageContext.request.contextPath}/vehicle" class="list-group-item list-group-item-action ${pagina.endsWith('/vehicle') ? 'active' : ''}">Parco auto</a>
     </div>
 </div>
 <!-- /#sidebar-wrapper -->

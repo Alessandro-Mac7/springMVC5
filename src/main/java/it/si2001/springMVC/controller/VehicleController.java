@@ -1,14 +1,16 @@
 package it.si2001.springMVC.controller;
 
+import it.si2001.springMVC.dto.VehicleDTO;
+import it.si2001.springMVC.model.Category;
 import it.si2001.springMVC.model.User;
 import it.si2001.springMVC.model.Vehicle;
 import it.si2001.springMVC.service.CategoryService;
 import it.si2001.springMVC.service.UserService;
 import it.si2001.springMVC.service.VehicleService;
 import it.si2001.springMVC.util.ResourceNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +30,9 @@ public class VehicleController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @GetMapping
     public String index(ModelMap model, HttpSession session){
         String logged = (String) session.getAttribute("loggedUser");
@@ -36,6 +41,8 @@ public class VehicleController {
             User user = userService.getUserByMail(logged);
             List<Vehicle> vehicles = vehicleService.getVehicles();
             if(user.getTypology().getType().equals("Admin")){
+                List<Category> categories = categoryService.getAll();
+                model.addAttribute("categories",categories);
                 model.addAttribute("vehicles",vehicles);
                 return "vehicles";
             } else {
@@ -48,22 +55,36 @@ public class VehicleController {
 
     @ResponseBody
     @PostMapping("/save")
-    public String saveVehicle(@RequestBody Vehicle newVehicles) {
+    public String saveVehicle(@RequestBody VehicleDTO vehicleDTO) throws ResourceNotFoundException {
+        Vehicle newVehicles = convertToEntity(vehicleDTO);
         vehicleService.saveVehicle(newVehicles);
         return "success";
     }
 
     @GetMapping("/edit/{id}")
-    public String editVehicle(@PathVariable int id, Model model) throws ResourceNotFoundException {
+    public @ResponseBody VehicleDTO editVehicle(@PathVariable int id) throws ResourceNotFoundException {
         Vehicle vehicle = vehicleService.getVehicle(id);
-        model.addAttribute("editable", vehicle);
-        return "redirect:/vehicle";
+        VehicleDTO vehicleDTO = convertToDto(vehicle);
+        return vehicleDTO;
     }
 
     @DeleteMapping("/delete/{id}")
     public String deleteVehicle(@PathVariable int id) {
         vehicleService.deleteVehicle(id);
         return "redirect:/vehicle";
+    }
+
+    private VehicleDTO convertToDto(Vehicle vehicle) {
+        VehicleDTO vehicleDTO = modelMapper.map(vehicle, VehicleDTO.class);
+        return vehicleDTO;
+    }
+
+    private Vehicle convertToEntity(VehicleDTO vehicleDTO) throws ResourceNotFoundException {
+        Vehicle vehicle = modelMapper.map(vehicleDTO, Vehicle.class);
+        Category category = categoryService.get(vehicleDTO.getCategoryId());
+        vehicle.setCategory(category);
+
+        return vehicle;
     }
 
 }

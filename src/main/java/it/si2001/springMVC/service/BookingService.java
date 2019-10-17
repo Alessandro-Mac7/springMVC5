@@ -21,6 +21,16 @@ public class BookingService {
     }
 
     @Transactional
+    public List<Booking> getBookingsUser(String email){
+        return bookingRepository.findBookingByUserEquals(email);
+    }
+
+    @Transactional
+    public List<Booking> getBookingsUserId(int id){
+        return bookingRepository.findBookingByUserId(id);
+    }
+
+    @Transactional
     public Booking getBooking(int id) throws ResourceNotFoundException {
         return bookingRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
     }

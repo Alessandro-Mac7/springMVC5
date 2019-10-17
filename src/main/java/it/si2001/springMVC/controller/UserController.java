@@ -56,10 +56,17 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String saveUser(@ModelAttribute RegisterDTO registerDTO) {
-        User newUser = convertToEntity(registerDTO);
-        userService.saveUser(newUser);
-        return "redirect:/";
+    public String saveUser(@ModelAttribute RegisterDTO registerDTO, HttpSession session) {
+        String logged = (String) session.getAttribute("loggedUser");
+        if(logged!=null){
+            User newUser = convertToEntity(registerDTO);
+            userService.saveUser(newUser);
+            return "redirect:/home";
+        } else {
+            User newUser = convertToEntity(registerDTO);
+            userService.saveUser(newUser);
+            return "redirect:/";
+        }
     }
 
     @ResponseBody
@@ -74,9 +81,10 @@ public class UserController {
     public String editUser(@PathVariable int id, HttpSession session, Model model) throws ResourceNotFoundException {
         String logged = (String) session.getAttribute("loggedUser");
         if(logged!=null){
+            String typology =userService.getUserByMail(logged).getTypology().getType();
             User user = userService.getUser(id);
             RegisterDTO registerDTO = convertToDto(user);
-            if(user.getTypology().getType().equals("Admin")){
+            if(typology.equals("Admin")){
                 model.addAttribute("user",registerDTO);
                 return "profile";
             } else {
@@ -95,6 +103,11 @@ public class UserController {
 
     private RegisterDTO convertToDto(User user) {
         RegisterDTO registerDTO = modelMapper.map(user, RegisterDTO.class);
+        if (user.getTypology().getType().equals("Admin")) {
+            registerDTO.setAdmin(true);
+        } else {
+            registerDTO.setAdmin(false);
+        }
         return registerDTO;
     }
 

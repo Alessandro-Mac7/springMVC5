@@ -46,6 +46,7 @@ public class AuthController {
 
             if(match){
                 session.setAttribute("loggedUser", userLoginDTO.getEmail());
+
                 if(user.getTypology().getType().equals("Admin"))
                     return new ModelAndView("redirect:/home");
                 else

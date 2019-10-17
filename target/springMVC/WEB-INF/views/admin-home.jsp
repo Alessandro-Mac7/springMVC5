@@ -52,9 +52,8 @@
                             <td>${customer.date}</td>
                             <td>${customer.email}</td>
                             <td>
-                                <a href=""  class="showCollapseEventi" data-toggle="tooltip" data-placement="top" title="Visualizza eventi" style="cursor:pointer; "><i class="fas fa-exclamation-triangle"></i></a>&nbsp;
-                                <a href="" class="showCollapsePrenotazioni" data-toggle="tooltip" data-placement="top" title="Visualizza prenotazioni" style="cursor:pointer; "><i class="fas fa-car-side"></i></a>&nbsp;
-                                <a href="" data-toggle="tooltip" data-placement="top" title="Modifica utente" style="cursor:pointer; "><i class="fas fa-edit"></i></a>&nbsp;
+                                <a href="" class="showBookingAjax" data-id="${customer.id}" data-toggle="tooltip" data-placement="top" title="Visualizza prenotazioni" style="cursor:pointer; "><i class="fas fa-car-side"></i></a>&nbsp;
+                                <a href="${pageContext.request.contextPath}/user/edit/${customer.id}" data-toggle="tooltip" data-placement="top" title="Modifica utente" style="cursor:pointer; "><i class="fas fa-edit"></i></a>&nbsp;
                                 <a class="deleteCustomer" href="javascript:void(0)" data-id=${customer.id} data-toggle="tooltip" data-placement="top" title="Elimina utente" style="cursor:pointer; "><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
@@ -125,6 +124,20 @@
     </div>
 </div>
 
+<div class="modal fade showPrenotazioniModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Prenotazioni <span id="customerName"></span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade successModal" tabindex="-1" role="dialog" aria-labelledby="success-modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -160,6 +173,32 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade showBookingModal" tabindex="-1" role="dialog" aria-labelledby="success-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header" >
+                <h5 class="modal-title" >Prenotazioni <span id="customerId"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div id="bookingList">
+                    <ul class="list">
+                        <li>
+                            <h3 class="name">name1</h3>
+                        </li>
+                        <li>
+                            <h3 class="name">name2</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <jsp:include page="/WEB-INF/views/parts/_footer.jsp"></jsp:include>
 <script src="<c:url value="/resources/js/admin.js"/>"></script>

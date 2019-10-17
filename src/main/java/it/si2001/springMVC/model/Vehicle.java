@@ -23,7 +23,7 @@ public class Vehicle implements Serializable {
     @Column(name="model", nullable = false, columnDefinition = "varchar(45)")
     private String model;
 
-    @Column(name="carRegistration", nullable = false, columnDefinition = "varchar(45)")
+    @Column(name="carRegistration", nullable = false)
     private Date carRegistration;
 
     @ManyToOne
